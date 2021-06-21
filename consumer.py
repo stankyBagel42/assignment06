@@ -15,5 +15,5 @@ class Consumer(threading.Thread):
             self.lock.acquire()
             if not self.q.empty():
                 item = self.q.get()
-                print(f"Consumer: {item}")
+                print(f"Consumer {self.name}: {item}")
             self.lock.release()

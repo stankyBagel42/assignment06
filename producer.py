@@ -15,8 +15,8 @@ class Producer(threading.Thread):
         while True:
             # Get lock to synchronize threads
             self.lock.acquire()
-            if len(self.q) < 10:
-                self.q.append(Random.randint(Random(), 0, 100))
+            if not self.q.full():
+                self.q.put(Random.randint(Random(), 0, 100))
             # Free lock to release next thread
             self.lock.release()
 
